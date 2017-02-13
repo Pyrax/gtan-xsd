@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://gtanet.work"
-           xmlns="http://gtanet.work"
+           targetNamespace="http://gtanet.work/xml/resource"
+           xmlns="http://gtanet.work/xml/resource"
            elementFormDefault="qualified">
 
   <!-- ========================================== -->

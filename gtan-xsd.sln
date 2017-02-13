@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Files", "Project Fi
 		LICENSE = LICENSE
 		meta.xsd = meta.xsd
 		README.md = README.md
+		settings.xsd = settings.xsd
 	EndProjectSection
 EndProject
 Global
