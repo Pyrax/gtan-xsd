@@ -50,6 +50,15 @@
     </xs:choice>
   </xs:group>
 
+  <xs:complexType name="groupAcl">
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="groupObject">
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="password" type="xs:string" />
+  </xs:complexType>
+
   <xs:group name="aclGroup">
     <xs:sequence>
       <xs:element name="right" type="aclRight" />
@@ -60,19 +69,7 @@
     <xs:attribute name="name" use="required" />
     <xs:attribute name="access" use="required" />
   </xs:attributeGroup>
-
-  <!-- ========================================== -->
-  <!-- Specific types -->
-  <!-- ========================================== -->
-  <xs:complexType name="groupAcl">
-    <xs:attribute name="name" type="xs:string" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="groupObject">
-    <xs:attribute name="name" type="xs:string" use="required" />
-    <xs:attribute name="password" type="xs:string" />
-  </xs:complexType>
-
+  
   <xs:complexType name="aclRight">
     <xs:attributeGroup ref="aclAttributes" />
   </xs:complexType>
