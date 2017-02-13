@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://gtanet.work"
+           xmlns="http://gtanet.work"
+           elementFormDefault="qualified">
+
+  <!-- ========================================== -->
+  <!-- Root element -->
+  <!-- ========================================== -->
+  <xs:element name="acl">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="aclElements" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- All elements available in ACL -->
+  <!-- ========================================== -->
+  <xs:group name="aclElements">
+    <xs:choice>
+      <xs:element name="group" type="groupElement" />
+      <xs:element name="acl" type="aclElement" />
+    </xs:choice>
+  </xs:group>
+
+  <!-- ========================================== -->
+  <!-- Top level elements -->
+  <!-- ========================================== -->
+  <xs:complexType name="groupElement">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="groupOptions" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="aclElement">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="aclGroup" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ========================================== -->
+  <!-- Specilization of top level elements -->
+  <!-- ========================================== -->
+  <xs:group name="groupOptions">
+    <xs:choice>
+      <xs:element name="acl" type="groupAcl" />
+      <xs:element name="object" type="groupObject" />
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="aclGroup">
+    <xs:sequence>
+      <xs:element name="right" type="aclRight" />
+    </xs:sequence>
+  </xs:group>
+
+  <xs:attributeGroup name="aclAttributes">
+    <xs:attribute name="name" use="required" />
+    <xs:attribute name="access" use="required" />
+  </xs:attributeGroup>
+
+  <!-- ========================================== -->
+  <!-- Specific types -->
+  <!-- ========================================== -->
+  <xs:complexType name="groupAcl">
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="groupObject">
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="password" type="xs:string" />
+  </xs:complexType>
+
+  <xs:complexType name="aclRight">
+    <xs:attributeGroup ref="aclAttributes" />
+  </xs:complexType>
+</xs:schema>
