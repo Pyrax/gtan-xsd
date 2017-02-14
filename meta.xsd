@@ -53,7 +53,7 @@
   </xs:complexType>
 
   <xs:complexType name="includeElement">
-    <xs:attribute name="resource" type="resourceList" use="required" />
+    <xs:attribute name="resource" type="resourceListType" use="required" />
   </xs:complexType>
 
   <xs:complexType name="mapElement">
@@ -88,7 +88,7 @@
     <xs:attribute name="author" type="xs:string" />
     <xs:attribute name="version" type="versionNumberType" />
     <xs:attribute name="type" type="resourceType" />
-    <xs:attribute name="gamemodes" type="resourceList" />
+    <xs:attribute name="gamemodes" type="resourceListType" />
     <xs:attribute name="async" type="xs:boolean" />
     <xs:attribute name="shadowcopy" type="xs:boolean" />
   </xs:attributeGroup>
@@ -96,7 +96,7 @@
   <xs:attributeGroup name="scriptAttributes">
     <xs:attribute name="src" type="xs:anyURI" use="required" />
     <xs:attribute name="type" type="scriptType" use="required" />
-    <xs:attribute name="lang" type="scriptLang" />
+    <xs:attribute name="lang" type="scriptLangType" />
   </xs:attributeGroup>
 
   <xs:attributeGroup name="mapAttributes">
@@ -141,7 +141,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="resourceList">
+  <xs:simpleType name="resourceListType">
     <!-- comma separated list -->
     <xs:restriction base="xs:string">
       <xs:pattern value="(([a-zA-Z0-9_])+(,([a-zA-Z0-9_])+)*)" />
@@ -155,7 +155,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="scriptLang">
+  <xs:simpleType name="scriptLangType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="javascript" />
       <xs:enumeration value="csharp" />
