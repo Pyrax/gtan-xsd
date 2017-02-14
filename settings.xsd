@@ -48,16 +48,16 @@
   
   <xs:group name="optionalSettings">
     <xs:choice>
-      <xs:element name="password" type="xs:string" default=""/>
-      <xs:element name="serverport" type="xs:positiveInteger" default="4499" />
-      <xs:element name="minclientversion" type="xs:string" default="0.0.0.0" />
+      <xs:element name="password" type="xs:token" default=""/>
+      <xs:element name="serverport" type="xs:unsignedShort" default="4499" />
+      <xs:element name="minclientversion" type="versionNumberType" default="0.0.0.0" />
       <xs:element name="minclientversion_auto_update" type="xs:boolean" default="true" />
       <xs:element name="masterserver" type="xs:anyURI" default="http://master.gtanet.work" />
       <xs:element name="announce" type="xs:boolean" default="true" />
       <xs:element name="announce_lan" type="xs:boolean" default="true" />
       <xs:element name="upnp" type="xs:boolean" default="false" />
       <xs:element name="log" type="xs:boolean" default="true" />
-      <xs:element name="loglevel" type="logLevel" default="0" />
+      <xs:element name="loglevel" type="logLevelType" default="0" />
       <xs:element name="vehicle_lagcomp" type="xs:boolean" default="true" />
       <xs:element name="onfoot_lagcomp" type="xs:boolean" default="true" />
       <xs:element name="refresh_rate" type="xs:nonNegativeInteger" default="120" />
@@ -76,7 +76,7 @@
   </xs:group>
 
   <xs:element name="servername" type="xs:string" />
-  <xs:element name="maxplayers" type="playerCount" default="16" />
+  <xs:element name="maxplayers" type="playerCountType" default="16" />
 
   <!-- ========================================== -->
   <!-- Complex types -->
@@ -88,16 +88,22 @@
   <!-- ========================================== -->
   <!-- Simple types -->
   <!-- ========================================== -->
-  <xs:simpleType name="playerCount">
+  <xs:simpleType name="playerCountType">
     <xs:restriction base="xs:positiveInteger">
       <xs:minInclusive value="1" />
       <xs:maxExclusive value="1500" />
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="logLevel">
+  <xs:simpleType name="logLevelType">
     <xs:restriction base="xs:nonNegativeInteger">
       <xs:maxInclusive value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="versionNumberType">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[0-9]+(\.?[0-9]+)*" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
