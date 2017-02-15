@@ -27,9 +27,6 @@
             <xs:group ref="optionalSettings" />
           </xs:choice>
           <xs:element ref="maxplayers" />
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="optionalSettings" />
-          </xs:choice>
         </xs:sequence>
         <!-- Case 2: maxPlayers first, then somewhere serverName -->
         <xs:sequence>
@@ -38,10 +35,11 @@
             <xs:group ref="optionalSettings" />
           </xs:choice>
           <xs:element ref="servername" />
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="optionalSettings" />
-          </xs:choice>
         </xs:sequence>
+      </xs:choice>
+
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="optionalSettings" />
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
