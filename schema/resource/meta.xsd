@@ -9,28 +9,136 @@
   <!-- ========================================== -->
   <xs:element name="meta">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="metaElements" />
-      </xs:choice>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="metaElements" />
+        </xs:choice>
+        
+        <xs:choice minOccurs="0">
+          <xs:group ref="uniqueMetaElements" />
+        </xs:choice>
+
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="metaElements" />
+        </xs:choice>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 
   <!-- ========================================== -->
-  <!-- Contains all elements available in resource meta files -->
+  <!-- All elements available in resource meta files -->
   <!-- ========================================== -->
+  <xs:element name="info" type="infoElement" />
+  <xs:element name="acl" type="aclElement" />
+  <xs:element name="settings" type="settingsElement" />
+
   <xs:group name="metaElements">
     <xs:choice>
-      <xs:element name="info" type="infoElement" />
       <xs:element name="script" type="scriptElement" />
       <xs:element name="file" type="fileElement" />
       <xs:element name="assembly" type="assemblyElement" />
       <xs:element name="include" type="includeElement" />
       <xs:element name="map" type="mapElement" />
       <xs:element name="export" type="exportElement" />
-      <xs:element name="acl" type="aclElement" />
       <xs:element name="config" type="configElement" />
-      <xs:element name="settings" type="settingsElement" />
     </xs:choice>
+  </xs:group>
+
+  <!-- Elements which should only occur once in a meta file {info, settings, acl} -->
+  <xs:group name="uniqueMetaElements">
+    <xs:choice>
+      <xs:group ref="uniqueMetaElements1_2" />
+      <xs:group ref="uniqueMetaElements3_4" />
+      <xs:group ref="uniqueMetaElements5_6" />
+      
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="metaElements" />
+      </xs:choice>
+    </xs:choice>
+  </xs:group>
+
+  <!-- Possible orders 1 and 2: info -> then settings+acl or acl+settings -->
+  <xs:group name="uniqueMetaElements1_2">
+    <xs:sequence>
+      <xs:element ref="info" minOccurs="1" />
+      
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="metaElements" />
+      </xs:choice>
+
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="settings" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="acl" minOccurs="0" />
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="acl" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="settings" minOccurs="0" />
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <!-- Possible orders 3 and 4: acl -> then info+settings or settings+info -->
+  <xs:group name="uniqueMetaElements3_4">
+    <xs:sequence>
+      <xs:element ref="acl" minOccurs="1" />
+      
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="metaElements" />
+      </xs:choice>
+
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="info" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="settings" minOccurs="0" />
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="settings" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="info" minOccurs="0" />
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+
+  <!-- Possible orders 5 and 6: settings, then info+acl or acl+info -->
+  <xs:group name="uniqueMetaElements5_6">
+    <xs:sequence>
+      <xs:element ref="settings" minOccurs="1" />
+      
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="metaElements" />
+      </xs:choice>
+      
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="info" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="acl" minOccurs="0" />
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="acl" minOccurs="1" />
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="metaElements" />
+          </xs:choice>
+          <xs:element ref="info" minOccurs="0" />
+        </xs:sequence>
+      </xs:choice>
+    </xs:sequence>
   </xs:group>
 
   <!-- ========================================== -->
