@@ -67,6 +67,9 @@
       </xs:choice>
 
       <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="metaElements" />
+        </xs:choice>
         <xs:sequence>
           <xs:element ref="settings" minOccurs="1" />
           <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -95,6 +98,9 @@
       </xs:choice>
 
       <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="metaElements" />
+        </xs:choice>
         <xs:sequence>
           <xs:element ref="info" minOccurs="1" />
           <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -123,6 +129,9 @@
       </xs:choice>
       
       <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="metaElements" />
+        </xs:choice>
         <xs:sequence>
           <xs:element ref="info" minOccurs="1" />
           <xs:choice minOccurs="0" maxOccurs="unbounded">
