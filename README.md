@@ -28,7 +28,7 @@ of the downloaded schema file.
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://gtan-portal.com/schema/server"
         xsi:schemaLocation="http://gtan-portal.com/schema/server
-                              http://gtan-portal.com/schema/server/settings.xsd">
+                            http://gtan-portal.com/schema/server/settings.xsd">
   
     <servername>Example Testserver</servername>
     <maxplayers>20</maxplayers>
