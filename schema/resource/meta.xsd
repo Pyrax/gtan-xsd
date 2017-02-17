@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://gtanet.work/xml/resource"
-           xmlns="http://gtanet.work/xml/resource"
+           targetNamespace="http://gtan-portal.com/schema/resource"
+           xmlns="http://gtan-portal.com/schema/resource"
            elementFormDefault="qualified">
 
   <!-- ========================================== -->
