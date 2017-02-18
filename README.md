@@ -2,6 +2,9 @@
 
 XML Schema Definitions for GTA Network
 
+![Autocompletion in Visual Studio](images/autocompletion.PNG)
+![XML Validation in Visual Studio](images/XML_validation.PNG)
+
 ## How to use
 
 All you need to do is to include this snippet in the root element of your XML file:
@@ -14,7 +17,7 @@ xsi:schemaLocation="http://gtan-portal.com/schema/resource
 ```
 
 The paths have to be replaced according to the type of XML you want to create (e.g. for an ACL.xml you would
-use the path "schema/resource/acl.xsd"). You can find a list of all the schemas available down below as well as a full example.
+use the path "schema/resource/acl.xsd"). You can find a list of all the schemas to choose from below as well as a full example.
 
 **Note for Visual Studio:** 
 By default, Visual Studio disabled the automatic download of schema files. You can either
