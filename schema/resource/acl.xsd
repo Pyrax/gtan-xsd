@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml"
            targetNamespace="http://gtan-portal.com/schema/resource"
            xmlns="http://gtan-portal.com/schema/resource"
            elementFormDefault="qualified">
@@ -119,7 +120,7 @@
       <xs:documentation>
         A class token consists of a class name and possibly an unlimited amount of members.
         It must begin with a letter or an underscore and must not contain any special characters apart from underscore.
-        <br xmlns="http://www.w3.org/1999/xhtml" />
+        <xhtml:br />
         Examples for valid values: {Default, command.kick, _command.server.kick}</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
@@ -151,7 +152,7 @@
   <xs:simpleType name="objectNameType">
     <xs:annotation>
       <xs:documentation>An object name is a token similar to class token but it can additionally have a * at the end.
-        <br xmlns="http://www.w3.org/1999/xhtml" />
+        <xhtml:br />
         Examples for valid values: {user.Test, user._Test, user.*}</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
