@@ -8,6 +8,11 @@
   <!-- Root element -->
   <!-- ========================================== -->
   <xs:element name="acl">
+    <xs:annotation>
+      <xs:documentation>
+        Defines an access control list (ACL) for a resource.
+        This is the root element.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="aclElements" />
@@ -29,6 +34,9 @@
   <!-- Top level elements -->
   <!-- ========================================== -->
   <xs:complexType name="groupElement">
+    <xs:annotation>
+      <xs:documentation>Specifies a group of objects and links the group to one or multiple ACL.</xs:documentation>
+    </xs:annotation>
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:group ref="groupOptions" />
     </xs:choice>
@@ -36,6 +44,9 @@
   </xs:complexType>
 
   <xs:complexType name="aclElement">
+    <xs:annotation>
+      <xs:documentation>Specifies an ACL consisting of rights.</xs:documentation>
+    </xs:annotation>
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
       <xs:group ref="aclGroup" />
     </xs:sequence>
@@ -46,6 +57,9 @@
   <!-- Specilization of top level elements -->
   <!-- ========================================== -->
   <xs:group name="groupOptions">
+    <xs:annotation>
+      <xs:documentation>In a group you can either specify an object or link an ACL.</xs:documentation>
+    </xs:annotation>
     <xs:choice>
       <xs:element name="acl" type="groupAcl" />
       <xs:element name="object" type="groupObject" />
@@ -53,26 +67,47 @@
   </xs:group>
 
   <xs:complexType name="groupAcl">
+    <xs:annotation>
+      <xs:documentation>
+        Specify an ACL that is assigned to this group.
+        The group inherits all the permissions defined in the referenced ACL.</xs:documentation>
+    </xs:annotation>
     <xs:attribute name="name" type="aclNameType" use="required" />
   </xs:complexType>
 
   <xs:complexType name="groupObject">
+    <xs:annotation>
+      <xs:documentation>
+        Specify an object which is assigned to this group.
+        An object could for example be a resource or it could be an user. It might have a password.</xs:documentation>
+    </xs:annotation>
     <xs:attribute name="name" type="objectNameType" use="required" />
     <xs:attribute name="password" type="passwordType" />
   </xs:complexType>
 
   <xs:group name="aclGroup">
+    <xs:annotation>
+      <xs:documentation>Define an ACL consisting of right elements.</xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:element name="right" type="aclRight" />
     </xs:sequence>
   </xs:group>
 
   <xs:attributeGroup name="aclAttributes">
+    <xs:annotation>
+      <xs:documentation>
+        Attributes of right elements. Rights must have a name as an identifier and it must
+        define an access level for this ACL. The access level can be true or false.</xs:documentation>
+    </xs:annotation>
     <xs:attribute name="name" type="rightNameType" use="required" />
     <xs:attribute name="access" type="xs:boolean" use="required" />
   </xs:attributeGroup>
   
   <xs:complexType name="aclRight">
+    <xs:annotation>
+      <xs:documentation>Rights inside an ACL.</xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="aclAttributes" />
   </xs:complexType>
 
@@ -80,24 +115,45 @@
   <!-- Simple types -->
   <!-- ========================================== -->
   <xs:simpleType name="classTokenType">
+    <xs:annotation>
+      <xs:documentation>
+        A class token consists of a class name and possibly an unlimited amount of members.
+        It must begin with a letter or an underscore and must not contain any special characters apart from underscore.
+        <br xmlns="http://www.w3.org/1999/xhtml" />
+        Examples for valid values: {Default, command.kick, _command.server.kick}</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="([a-zA-Z_](\.?[a-zA-Z0-9_])*)" />
     </xs:restriction>
   </xs:simpleType>
   
   <xs:simpleType name="aclNameType">
+    <xs:annotation>
+      <xs:documentation>Name of an ACL can be any class token.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="classTokenType" />
   </xs:simpleType>
 
   <xs:simpleType name="groupNameType">
+    <xs:annotation>
+      <xs:documentation>Name of a group can be any class token.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="classTokenType" />
   </xs:simpleType>
 
   <xs:simpleType name="rightNameType">
+    <xs:annotation>
+      <xs:documentation>Name of a right element can be any class token.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="classTokenType" />
   </xs:simpleType>
 
   <xs:simpleType name="objectNameType">
+    <xs:annotation>
+      <xs:documentation>An object name is a token similar to class token but it can additionally have a * at the end.
+        <br xmlns="http://www.w3.org/1999/xhtml" />
+        Examples for valid values: {user.Test, user._Test, user.*}</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:token">
       <!-- Similar to classTokenType, but can have an .* at the end -->
       <xs:pattern value="([a-zA-Z_](\.?[a-zA-Z0-9_])*(\.\*)?)" />
@@ -105,6 +161,9 @@
   </xs:simpleType>
 
   <xs:simpleType name="passwordType">
+    <xs:annotation>
+      <xs:documentation>A password might contain any characters other than whitespaces.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="\S*" />
     </xs:restriction>
