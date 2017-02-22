@@ -12,7 +12,7 @@
     <xs:annotation>
       <xs:documentation>
         Defines an access control list (ACL) for a resource.
-        This is the root element.</xs:documentation>
+        <xhtml:strong>This is the root element.</xhtml:strong></xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
