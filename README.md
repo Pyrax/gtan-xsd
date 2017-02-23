@@ -11,9 +11,9 @@ All you need to do is to include this snippet in the root element of your XML fi
 
 ```xml
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://gtan-portal.com/schema/resource"
-xsi:schemaLocation="http://gtan-portal.com/schema/resource 
-                    http://gtan-portal.com/schema/resource/meta.xsd"
+xmlns="http://gtan.azurewebsites.net/schema/resource"
+xsi:schemaLocation="http://gtan.azurewebsites.net/schema/resource 
+                    http://gtan.azurewebsites.net/schema/resource/meta.xsd"
 ```
 
 The paths have to be replaced according to the type of XML you want to create (e.g. for an ACL.xml you would
@@ -29,9 +29,9 @@ of the downloaded schema file.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="http://gtan-portal.com/schema/server"
-        xsi:schemaLocation="http://gtan-portal.com/schema/server
-                            http://gtan-portal.com/schema/server/settings.xsd">
+        xmlns="http://gtan.azurewebsites.net/schema/server"
+        xsi:schemaLocation="http://gtan.azurewebsites.net/schema/server
+                            http://gtan.azurewebsites.net/schema/server/settings.xsd">
   
     <servername>Example Testserver</servername>
     <maxplayers>20</maxplayers>

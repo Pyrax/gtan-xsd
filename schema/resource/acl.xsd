@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:xhtml="http://www.w3.org/1999/xhtml"
-           targetNamespace="http://gtan-portal.com/schema/resource"
-           xmlns="http://gtan-portal.com/schema/resource"
+           targetNamespace="http://gtan.azurewebsites.net/schema/resource"
+           xmlns="http://gtan.azurewebsites.net/schema/resource"
            elementFormDefault="qualified">
 
   <!-- ========================================== -->

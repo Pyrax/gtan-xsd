@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <meta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	  xmlns="http://gtan-portal.com/schema/resource"
-	  xsi:schemaLocation="http://gtan-portal.com/schema/resource 
-						  http://gtan-portal.com/schema/resource/meta.xsd">
+	  xmlns="http://gtan.azurewebsites.net/schema/resource"
+	  xsi:schemaLocation="http://gtan.azurewebsites.net/schema/resource 
+						  http://gtan.azurewebsites.net/schema/resource/meta.xsd">
 	
 	<info name="TestScript" author="Pyrax" description="This script is just a test for using schema files." version="1.0.0" type="script" />
 	
