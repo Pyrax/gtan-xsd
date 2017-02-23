@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml"
            targetNamespace="http://gtan-portal.com/schema/resource"
            xmlns="http://gtan-portal.com/schema/resource"
            elementFormDefault="qualified">
@@ -8,6 +9,13 @@
   <!-- Root element -->
   <!-- ========================================== -->
   <xs:element name="meta">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies meta data which is needed for a GTAN resource.
+        <xhtml:br />
+        <xhtml:strong>This is the root element.</xhtml:strong>
+      </xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -26,26 +34,183 @@
   </xs:element>
 
   <!-- ========================================== -->
-  <!-- All elements available in resource meta files -->
+  <!-- Top level elements -->
   <!-- ========================================== -->
-  <xs:element name="info" type="infoElement" />
-  <xs:element name="acl" type="aclElement" />
-  <xs:element name="settings" type="settingsElement" />
+  <xs:element name="info">
+    <xs:annotation>
+      <xs:documentation>
+        Provide optional information about this resource. All attributes are optional.
+        <xhtml:br />
+        async specifies whether the resource should be limited to a single thread or if it is supposed to run asynchronously.
+        <xhtml:br />
+        shadowcopy specifies whether compiled DLL's should be loaded directly from the filesystem or copied first.
+        Set this to true to be able to update DLL files while debugging resources.
+        NOTE: When using shadowcopy, the system may fail to load dependant DLL's, as it no longer knows the original directory of the loaded assembly.
+        <xhtml:br />
+        This element can only be used once for each resource.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="description" type="xs:string" />
+      <xs:attribute name="author" type="xs:string" />
+      <xs:attribute name="version" type="versionNumberType" />
+      <xs:attribute name="type" type="resourceType" />
+      <xs:attribute name="gamemodes" type="resourceListType" />
+      <xs:attribute name="async" type="xs:boolean" />
+      <xs:attribute name="shadowcopy" type="xs:boolean" />
+    </xs:complexType>
+  </xs:element>
 
+  <xs:element name="acl">
+    <xs:annotation>
+      <xs:documentation>
+        Specify an ACL which is linked to this resource. Might be used to define additional rights
+        which come with this resource or to overwrite a server's ACL.
+        <xhtml:br />
+        This element can only be used once for each resource.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute ref="src" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="settings">
+    <xs:annotation>
+      <xs:documentation>
+        Specify settings related to this resource.
+        Either define the settings inside this element or link an external file through the src attribute.
+        <xhtml:br />
+        This element can only be used once for each resource.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence maxOccurs="unbounded">
+        <xs:element ref="setting" />
+      </xs:sequence>
+      <xs:attribute ref="src" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="script">
+    <xs:annotation>
+      <xs:documentation>Add a script file to this resource which will be run.
+        Each script must have a type attribute and a src.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute ref="src" use="required" />
+      <xs:attribute ref="type" use="required" />
+      <xs:attribute name="lang" type="scriptLangType" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="file">
+    <xs:annotation>
+      <xs:documentation>Specify a file that must be downloaded by the clients.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute ref="src" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="assembly">
+    <xs:annotation>
+      <xs:documentation>Declares a .NET reference used for your scripts.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="ref" type="xs:anyURI" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="include">
+    <xs:annotation>
+      <xs:documentation>List of resources that this resource depends on, and must be started before this one.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="resource" type="resourceListType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="map">
+    <xs:annotation>
+      <xs:documentation>Specify a .map file used by this resource.
+        It can have an attribute to specify the dimension where the map will be loaded in.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute ref="src" use="required" />
+      <xs:attribute name="dimension" type="xs:nonNegativeInteger" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="export">
+    <xs:annotation>
+      <xs:documentation>
+        Specify functions and events exported by this resource. These can be used in other resources.
+        You can only export methods located inside classes that inherit from "Script".
+        <xhtml:br />
+        Each export element should either have a function or a event attribute.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="class" type="validIdentifier" />
+      <xs:attribute name="function" type="validIdentifier" />
+      <xs:attribute name="event" type="validIdentifier" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="config">
+    <xs:annotation>
+      <xs:documentation>Specifies a custom XML config file to be loaded by a resource with
+        "API.loadConfig(...)".</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute ref="src" use="required" />
+      <xs:attribute ref="type" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- Lower level elements -->
+  <!-- ========================================== -->
+  <xs:element name="setting">
+    <xs:annotation>
+      <xs:documentation>Defines a setting which must have a name attribute as an identifier.
+        Default value will be used if the value is invalid or cannot be found.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="value" type="xs:string" />
+      <xs:attribute name="default" type="xs:string" />
+      <xs:attribute name="description" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- Groups which ensure that specific elements are unique -->
+  <!-- ========================================== -->
   <xs:group name="metaElements">
+    <xs:annotation>
+      <xs:documentation>Group of elements which might be used multiple times in a resource.</xs:documentation>
+    </xs:annotation>
     <xs:choice>
-      <xs:element name="script" type="scriptElement" />
-      <xs:element name="file" type="fileElement" />
-      <xs:element name="assembly" type="assemblyElement" />
-      <xs:element name="include" type="includeElement" />
-      <xs:element name="map" type="mapElement" />
-      <xs:element name="export" type="exportElement" />
-      <xs:element name="config" type="configElement" />
+      <xs:element ref="script" />
+      <xs:element ref="file" />
+      <xs:element ref="assembly" />
+      <xs:element ref="include" />
+      <xs:element ref="map" />
+      <xs:element ref="export" />
+      <xs:element ref="config" />
     </xs:choice>
   </xs:group>
 
   <!-- Elements which should only occur once in a meta file {info, settings, acl} -->
   <xs:group name="uniqueMetaElements">
+    <xs:annotation>
+      <xs:documentation>Group which covers all possible orders of unique elements combined with
+        optional elements. Therefore, elements can be used in any given order but their usage amount
+        can be limited.</xs:documentation>
+    </xs:annotation>
     <xs:choice>
       <xs:group ref="uniqueMetaElements1_2" />
       <xs:group ref="uniqueMetaElements3_4" />
@@ -149,106 +314,15 @@
       </xs:choice>
     </xs:sequence>
   </xs:group>
+  
+  <!-- ========================================== -->
+  <!-- Attributes -->
+  <!-- ========================================== -->
+  <xs:attribute name="src" type="xs:anyURI" />
+  <xs:attribute name="type" type="scriptType" />
 
   <!-- ========================================== -->
-  <!-- Top level elements -->
-  <!-- ========================================== -->
-  <xs:complexType name="infoElement">
-    <xs:attributeGroup ref="infoAttributes" />
-  </xs:complexType>
-
-  <xs:complexType name="scriptElement">
-    <xs:attributeGroup ref="scriptAttributes" />
-  </xs:complexType>
-
-  <xs:complexType name="fileElement">
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="assemblyElement">
-    <xs:attribute name="ref" type="xs:anyURI" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="includeElement">
-    <xs:attribute name="resource" type="resourceListType" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="mapElement">
-    <xs:attributeGroup ref="mapAttributes" />
-  </xs:complexType>
-
-  <xs:complexType name="exportElement">
-    <xs:attributeGroup ref="exportAttributes" />
-  </xs:complexType>
-
-  <xs:complexType name="aclElement">
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="configElement">
-    <xs:attributeGroup ref="configAttributes" />
-  </xs:complexType>
-
-  <xs:complexType name="settingsElement">
-    <xs:sequence maxOccurs="unbounded">
-      <xs:element name="setting" type="settingElement" />
-    </xs:sequence>
-    <xs:attribute name="src" />
-  </xs:complexType>
-
-  <!-- ========================================== -->
-  <!-- Specilization of top level elements -->
-  <!-- ========================================== -->
-  <xs:attributeGroup name="infoAttributes">
-    <xs:attribute name="name" type="xs:string" />
-    <xs:attribute name="description" type="xs:string" />
-    <xs:attribute name="author" type="xs:string" />
-    <xs:attribute name="version" type="versionNumberType" />
-    <xs:attribute name="type" type="resourceType" />
-    <xs:attribute name="gamemodes" type="resourceListType" />
-    <xs:attribute name="async" type="xs:boolean" />
-    <xs:attribute name="shadowcopy" type="xs:boolean" />
-  </xs:attributeGroup>
-
-  <xs:attributeGroup name="scriptAttributes">
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-    <xs:attribute name="type" type="scriptType" use="required" />
-    <xs:attribute name="lang" type="scriptLangType" />
-  </xs:attributeGroup>
-
-  <xs:attributeGroup name="mapAttributes">
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-    <xs:attribute name="dimension" type="xs:nonNegativeInteger" />
-  </xs:attributeGroup>
-
-  <xs:attributeGroup name="exportAttributes">
-    <xs:attribute name="class" type="validIdentifier" />
-    <xs:attribute name="function" type="validIdentifier" />
-    <xs:attribute name="event" type="validIdentifier" />
-  </xs:attributeGroup>
-
-  <xs:attributeGroup name="configAttributes">
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-    <xs:attribute name="type" type="scriptType" use="required" />
-  </xs:attributeGroup>
-
-  <!-- ========================================== -->
-  <!-- Lower level elements -->
-  <!-- ========================================== -->
-
-  <xs:complexType name="settingElement">
-    <xs:attributeGroup ref="settingAttributes" />
-  </xs:complexType>
-
-  <xs:attributeGroup name="settingAttributes">
-    <xs:attribute name="name" type="xs:string" use="required" />
-    <xs:attribute name="value" type="xs:string" />
-    <xs:attribute name="default" type="xs:string" />
-    <xs:attribute name="description" type="xs:string" />
-  </xs:attributeGroup>
-
-  <!-- ========================================== -->
-  <!-- Specific types -->
+  <!-- Simple types -->
   <!-- ========================================== -->
   <xs:simpleType name="resourceType">
     <xs:restriction base="xs:string">
@@ -259,6 +333,15 @@
   </xs:simpleType>
 
   <xs:simpleType name="resourceListType">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a comma delimited list of resource names.
+        <xhtml:br />
+        Must start with a letter, number or an underscore.
+        Then there might follow even more characters or a comma to separate the resources.
+        Does not allow a separator for the last resource.
+      </xs:documentation>
+    </xs:annotation>
     <!-- comma separated list -->
     <xs:restriction base="xs:string">
       <xs:pattern value="(([a-zA-Z0-9_])+(,([a-zA-Z0-9_])+)*)" />
@@ -266,6 +349,9 @@
   </xs:simpleType>
 
   <xs:simpleType name="scriptType">
+    <xs:annotation>
+      <xs:documentation>Defines where a script while be executed (client/server).</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="client" />
       <xs:enumeration value="server" />
@@ -283,13 +369,21 @@
 
   <!-- Restrictions on identifiers name made by the programming language -->
   <xs:simpleType name="validIdentifier">
-    <!-- must start with a character, an underscore or "@" and must not contain special characters other than underscore -->
+    <xs:annotation>
+      <xs:documentation>Must start with a character, an underscore or "@" and must not contain special characters other than underscore.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z_@][a-zA-Z_0-9]*" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="versionNumberType">
+    <xs:annotation>
+      <xs:documentation>
+        Version number which must contain atleast one number and
+        might have an unlimited amount of numbers and points as separators allowing SemVer.
+      </xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="[0-9]+(\.?[0-9]+)*" />
     </xs:restriction>
