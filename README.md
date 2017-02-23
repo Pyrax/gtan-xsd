@@ -43,11 +43,13 @@ of the downloaded schema file.
 
 *Example of a settings.xml for a server*
 
-## List of schemas
+## List of schemas & docs
 
-* [/schema/resource/acl.xsd](schema/resource/acl.xsd)
-* [/schema/resource/meta.xsd](schema/resource/meta.xsd)
-* [/schema/server/settings.xsd](schema/server/settings.xsd)
+| Schema                                                                | Docs                                                 |
+| --------------------------------------------------------------------- | ---------------------------------------------------- |
+| [/schema/resource/acl.xsd](schema/resource/acl.xsd)                   | N/A                                                  |
+| [/schema/resource/meta.xsd](schema/resource/meta.xsd)                 | http://pyrax.github.io/gtan-xsd/resource/meta.html   |
+| [/schema/server/settings.xsd](schema/server/settings.xsd)             | N/A                                                  |
 
 *Schema definitions can also be found in the directory [schema](schema/).*
 
