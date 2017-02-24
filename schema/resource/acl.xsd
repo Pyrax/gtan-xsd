@@ -26,7 +26,7 @@
   <!-- ========================================== -->
   <xs:group name="aclElements">
     <xs:choice>
-      <xs:element name="group" type="groupElement" />
+      <xs:element ref="group" />
       <xs:element name="acl" type="aclElement" />
     </xs:choice>
   </xs:group>
@@ -34,83 +34,61 @@
   <!-- ========================================== -->
   <!-- Top level elements -->
   <!-- ========================================== -->
-  <xs:complexType name="groupElement">
+  <xs:element name="group">
     <xs:annotation>
       <xs:documentation>Specifies a group of objects and links the group to one or multiple ACL.</xs:documentation>
     </xs:annotation>
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="groupOptions" />
-    </xs:choice>
-    <xs:attribute name="name" type="groupNameType" use="required" />
-  </xs:complexType>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="acl">
+          <xs:complexType>
+            <xs:attribute name="name" type="aclNameType" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="object" />
+      </xs:choice>
+      <xs:attribute name="name" type="groupNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
 
   <xs:complexType name="aclElement">
     <xs:annotation>
       <xs:documentation>Specifies an ACL consisting of rights.</xs:documentation>
     </xs:annotation>
     <xs:sequence minOccurs="0" maxOccurs="unbounded">
-      <xs:group ref="aclGroup" />
+      <xs:element ref="right" />
     </xs:sequence>
     <xs:attribute name="name" type="aclNameType" use="required" />
   </xs:complexType>
 
   <!-- ========================================== -->
-  <!-- Specilization of top level elements -->
+  <!-- Lower level elements -->
   <!-- ========================================== -->
-  <xs:group name="groupOptions">
-    <xs:annotation>
-      <xs:documentation>In a group you can either specify an object or link an ACL.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:element name="acl" type="groupAcl" />
-      <xs:element name="object" type="groupObject" />
-    </xs:choice>
-  </xs:group>
-
-  <xs:complexType name="groupAcl">
-    <xs:annotation>
-      <xs:documentation>
-        Specify an ACL that is assigned to this group.
-        The group inherits all the permissions defined in the referenced ACL.</xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="name" type="aclNameType" use="required" />
-  </xs:complexType>
-
-  <xs:complexType name="groupObject">
+  <xs:element name="object">
     <xs:annotation>
       <xs:documentation>
         Specify an object which is assigned to this group.
-        An object could for example be a resource or it could be an user. It might have a password.</xs:documentation>
+        An object could for example be a resource or it could be an user. It might have a password.
+      </xs:documentation>
     </xs:annotation>
-    <xs:attribute name="name" type="objectNameType" use="required" />
-    <xs:attribute name="password" type="passwordType" />
-  </xs:complexType>
+    <xs:complexType>
+      <xs:attribute name="name" type="objectNameType" use="required" />
+      <xs:attribute name="password" type="passwordType" />
+    </xs:complexType>
+  </xs:element>
 
-  <xs:group name="aclGroup">
-    <xs:annotation>
-      <xs:documentation>Define an ACL consisting of right elements.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="right" type="aclRight" />
-    </xs:sequence>
-  </xs:group>
-
-  <xs:attributeGroup name="aclAttributes">
+  <xs:element name="right">
     <xs:annotation>
       <xs:documentation>
-        Attributes of right elements. Rights must have a name as an identifier and it must
-        define an access level for this ACL. The access level can be true or false.</xs:documentation>
+        Rights inside an ACL. Rights must have a name as an identifier and it must define an
+        access level for this ACL. The access level can be true or false.
+      </xs:documentation>
     </xs:annotation>
-    <xs:attribute name="name" type="rightNameType" use="required" />
-    <xs:attribute name="access" type="xs:boolean" use="required" />
-  </xs:attributeGroup>
-  
-  <xs:complexType name="aclRight">
-    <xs:annotation>
-      <xs:documentation>Rights inside an ACL.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="aclAttributes" />
-  </xs:complexType>
+    <xs:complexType>
+      <xs:attribute name="name" type="rightNameType" use="required" />
+      <xs:attribute name="access" type="xs:boolean" use="required" />
+    </xs:complexType>
+  </xs:element>
 
   <!-- ========================================== -->
   <!-- Simple types -->

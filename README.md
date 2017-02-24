@@ -47,7 +47,7 @@ of the downloaded schema file.
 
 | Schema                                                                | Docs                                                 |
 | --------------------------------------------------------------------- | ---------------------------------------------------- |
-| [/schema/resource/acl.xsd](schema/resource/acl.xsd)                   | N/A                                                  |
+| [/schema/resource/acl.xsd](schema/resource/acl.xsd)                   | http://pyrax.github.io/gtan-xsd/resource/acl.html    |
 | [/schema/resource/meta.xsd](schema/resource/meta.xsd)                 | http://pyrax.github.io/gtan-xsd/resource/meta.html   |
 | [/schema/server/settings.xsd](schema/server/settings.xsd)             | N/A                                                  |
 
