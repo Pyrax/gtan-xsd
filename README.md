@@ -49,7 +49,7 @@ of the downloaded schema file.
 | --------------------------------------------------------------------- | ---------------------------------------------------- |
 | [/schema/resource/acl.xsd](schema/resource/acl.xsd)                   | http://pyrax.github.io/gtan-xsd/resource/acl.html    |
 | [/schema/resource/meta.xsd](schema/resource/meta.xsd)                 | http://pyrax.github.io/gtan-xsd/resource/meta.html   |
-| [/schema/server/settings.xsd](schema/server/settings.xsd)             | N/A                                                  |
+| [/schema/server/settings.xsd](schema/server/settings.xsd)             | http://pyrax.github.io/gtan-xsd/server/settings.html |
 
 *Schema definitions can also be found in the directory [schema](schema/).*
 

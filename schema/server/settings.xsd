@@ -19,7 +19,173 @@
   </xs:element>
 
   <!-- ========================================== -->
-  <!-- All elements available as server settings -->
+  <!-- Top level elements -->
+  <!-- ========================================== -->
+  <xs:element name="servername" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Servername is a mandatory setting according to this schema definition.
+        <xhtml:br/>Can only be specified once in a settings.xml.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="maxplayers" type="playerCountType" default="16">
+    <xs:annotation>
+      <xs:documentation>
+        Maxplayers is a mandatory setting according to this schema definition.
+        <xhtml:br/>Can only be specified once in a settings.xml.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="password" type="xs:token" default="">
+    <xs:annotation>
+      <xs:documentation>Can be used to set a password for the server.
+        Leave it blank to remove any password.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="serverport" type="xs:unsignedShort" default="4499">
+    <xs:annotation>
+      <xs:documentation>Specifies a port number to communicate over UDP and TCP.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="minclientversion" type="versionNumberType" default="0.0.0.0">
+    <xs:annotation>
+      <xs:documentation>Require clients to have a minimum version of GTAN to be able to connnect.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="minclientversion_auto_update" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Autoupdate client's files before connecting to the server.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="masterserver" type="xs:anyURI" default="http://master.gtanet.work">
+    <xs:annotation>
+      <xs:documentation>Address of the master server to register to. Should not usually be modified.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="announce" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Defines whether to announce server, so it will be visible on the master list.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="announce_lan" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Defines whether to announce server in a local network, so it will be visible in LAN.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="upnp" type="xs:boolean" default="false">
+    <xs:annotation>
+      <xs:documentation>Use Universal Plug and Play protocol to automatically forward ports.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="log" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Defines whether the console output should be written to a file.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="loglevel" type="logLevelType" default="0" />
+  
+  <xs:element name="vehicle_lagcomp" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Vehicle lag compensation.
+        Disabling may result in smoother sync, but delayed data.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="onfoot_lagcomp" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>On-foot lag compensation.
+        Disabling may result in smoother sync, but delayed data.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="refresh_rate" type="xs:nonNegativeInteger" default="120">
+    <xs:annotation>
+      <xs:documentation>Server refresh rate (tick rate in Hz).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="acl_enabled" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Defines whether the ACL is enabled.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="whitelist" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Whitelist of mods based on hash.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="mod" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Defines an allowed mod.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="hash" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>MD5 hash of the mod.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="httpserver" type="xs:boolean" default="false">
+    <xs:annotation>
+      <xs:documentation>Enable an HTTP server for file transfer.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="local_address" type="xs:anyURI" default="0.0.0.0">
+    <xs:annotation>
+      <xs:documentation>Specifies a local IP address to bind the server to.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="trust_client_entity_properties" type="xs:boolean" default="false">
+    <xs:annotation>
+      <xs:documentation>Allow client-side entity properties to be trusted and accepted by the server.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="fqdn" type="xs:anyURI">
+    <xs:annotation>
+      <xs:documentation>The ability to use FQDNs instead of IP addresses.
+        If the IP matches the resolved domain name, then the IP gets replaced by the FQDN.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="conntimeout" type="xs:boolean" default="true">
+    <xs:annotation>
+      <xs:documentation>Defines whether the client should automatically reconnect within 60 seconds after a timeout.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="allowcefdevtool" type="xs:boolean" default="false">
+    <xs:annotation>
+      <xs:documentation>Defines whether the CEF dev tools can be used on clients.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <xs:element name="resource">
+    <xs:annotation>
+      <xs:documentation>A resource to be loaded by the server which is specified by it's source.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- Sequence which ensures that specific elements are mandatory   -->
+  <!-- but can occur in any given order alongside optional elements. -->
   <!-- ========================================== -->
   <xs:complexType name="configElements">
     <xs:annotation>
@@ -33,13 +199,11 @@
         </xhtml:a>
       </xs:documentation>
     </xs:annotation>
-    
     <!-- This sequence ensures that the serverName and maxPlayers settings must be present! -->
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="optionalSettings" />
       </xs:choice>
-
       <xs:choice minOccurs="1">
         <!-- Case 1: serverName first, then somewhere maxPlayers -->
         <xs:sequence>
@@ -58,77 +222,54 @@
           <xs:element ref="servername" />
         </xs:sequence>
       </xs:choice>
-
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:group ref="optionalSettings" />
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
-  
+
   <xs:group name="optionalSettings">
     <xs:annotation>
-      <xs:documentation>A group of optional settings which might be omitted.
+      <xs:documentation>
+        A group of optional settings which might be omitted.
         <xhtml:br />Although this schema allows using these elements multiple times, it is
-        highly advised to make sure that they are only used once in a settings.xml.</xs:documentation>
+        highly advised to make sure that they are only used once in a settings.xml.
+      </xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:element name="password" type="xs:token" default=""/>
-      <xs:element name="serverport" type="xs:unsignedShort" default="4499" />
-      <xs:element name="minclientversion" type="versionNumberType" default="0.0.0.0" />
-      <xs:element name="minclientversion_auto_update" type="xs:boolean" default="true" />
-      <xs:element name="masterserver" type="xs:anyURI" default="http://master.gtanet.work" />
-      <xs:element name="announce" type="xs:boolean" default="true" />
-      <xs:element name="announce_lan" type="xs:boolean" default="true" />
-      <xs:element name="upnp" type="xs:boolean" default="false" />
-      <xs:element name="log" type="xs:boolean" default="true" />
-      <xs:element name="loglevel" type="logLevelType" default="0" />
-      <xs:element name="vehicle_lagcomp" type="xs:boolean" default="true" />
-      <xs:element name="onfoot_lagcomp" type="xs:boolean" default="true" />
-      <xs:element name="refresh_rate" type="xs:nonNegativeInteger" default="120" />
-      <xs:element name="acl_enabled" type="xs:boolean" default="true" />
-      <xs:element name="whitelist" type="xs:string" />
-      <xs:element name="mod" type="xs:string" />
-      <xs:element name="hash" type="xs:string" />
-      <xs:element name="httpserver" type="xs:boolean" default="false" />
-      <xs:element name="local_address" type="xs:anyURI" default="0.0.0.0" />
-      <xs:element name="trust_client_entity_properties" type="xs:boolean" default="false" />
-      <xs:element name="fqdn" type="xs:anyURI" />
-      <xs:element name="conntimeout" type="xs:boolean" default="true" />
-      <xs:element name="allowcefdevtool" type="xs:boolean" default="false" />
-      <xs:element name="resource" type="resourceType" />
+      <xs:element ref="password" />
+      <xs:element ref="serverport" />
+      <xs:element ref="minclientversion" />
+      <xs:element ref="minclientversion_auto_update" />
+      <xs:element ref="masterserver" />
+      <xs:element ref="announce" />
+      <xs:element ref="announce_lan" />
+      <xs:element ref="upnp" />
+      <xs:element ref="log" />
+      <xs:element ref="loglevel" />
+      <xs:element ref="vehicle_lagcomp" />
+      <xs:element ref="onfoot_lagcomp" />
+      <xs:element ref="refresh_rate" />
+      <xs:element ref="acl_enabled" />
+      <xs:element ref="whitelist" />
+      <xs:element ref="mod" />
+      <xs:element ref="hash" />
+      <xs:element ref="httpserver" />
+      <xs:element ref="local_address" />
+      <xs:element ref="trust_client_entity_properties" />
+      <xs:element ref="fqdn" />
+      <xs:element ref="conntimeout" />
+      <xs:element ref="allowcefdevtool" />
+      <xs:element ref="resource" />
     </xs:choice>
   </xs:group>
-
-  <xs:element name="servername" type="xs:string">
-    <xs:annotation>
-      <xs:documentation>Servername is a mandatory setting according to this schema definition.
-        <xhtml:br/>Can only be specified once in a settings.xml.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="maxplayers" type="playerCountType" default="16">
-    <xs:annotation>
-      <xs:documentation>
-        Maxplayers is a mandatory setting according to this schema definition.
-        <xhtml:br/>Can only be specified once in a settings.xml.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-
-  <!-- ========================================== -->
-  <!-- Complex types -->
-  <!-- ========================================== -->
-  <xs:complexType name="resourceType">
-    <xs:annotation>
-      <xs:documentation>A resource to be loaded by the server which is specified by it's source.</xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="src" type="xs:anyURI" use="required" />
-  </xs:complexType>
 
   <!-- ========================================== -->
   <!-- Simple types -->
   <!-- ========================================== -->
   <xs:simpleType name="playerCountType">
     <xs:annotation>
-      <xs:documentation>Amount of players that can connect to the server.</xs:documentation>
+      <xs:documentation>Amount of players that can connect to a server.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:positiveInteger">
       <xs:maxExclusive value="1500" />
