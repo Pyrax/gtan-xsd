@@ -72,7 +72,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute ref="src" use="required" />
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
     </xs:complexType>
   </xs:element>
 
@@ -89,7 +89,7 @@
       <xs:sequence maxOccurs="unbounded">
         <xs:element ref="setting" />
       </xs:sequence>
-      <xs:attribute ref="src" />
+      <xs:attribute name="src" type="xs:anyURI" />
     </xs:complexType>
   </xs:element>
   
@@ -99,8 +99,8 @@
         Each script must have a type attribute and a src.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute ref="src" use="required" />
-      <xs:attribute ref="type" use="required" />
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
+      <xs:attribute name="type" type="scriptType" use="required" />
       <xs:attribute name="lang" type="scriptLangType" />
     </xs:complexType>
   </xs:element>
@@ -110,7 +110,7 @@
       <xs:documentation>Specify a file that must be downloaded by the clients.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute ref="src" use="required" />
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
     </xs:complexType>
   </xs:element>
 
@@ -138,7 +138,7 @@
         It can have an attribute to specify the dimension where the map will be loaded in.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute ref="src" use="required" />
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
       <xs:attribute name="dimension" type="xs:nonNegativeInteger" />
     </xs:complexType>
   </xs:element>
@@ -165,8 +165,8 @@
         "API.loadConfig(...)".</xs:documentation>
     </xs:annotation>
     <xs:complexType>
-      <xs:attribute ref="src" use="required" />
-      <xs:attribute ref="type" use="required" />
+      <xs:attribute name="src" type="xs:anyURI" use="required" />
+      <xs:attribute name="type" type="scriptType" use="required" />
     </xs:complexType>
   </xs:element>
 
@@ -314,12 +314,6 @@
       </xs:choice>
     </xs:sequence>
   </xs:group>
-  
-  <!-- ========================================== -->
-  <!-- Attributes -->
-  <!-- ========================================== -->
-  <xs:attribute name="src" type="xs:anyURI" />
-  <xs:attribute name="type" type="scriptType" />
 
   <!-- ========================================== -->
   <!-- Simple types -->

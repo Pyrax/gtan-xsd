@@ -367,11 +367,11 @@ div#legend div.hint {
 }
 </style>
       <script type="text/javascript">
-// <!--
+<!--
 /* IDs of XML Instance Representation boxes */
-var xiBoxes = new Array('element_meta_xibox', 'element_info_xibox', 'element_acl_xibox', 'element_settings_xibox', 'element_script_xibox', 'element_file_xibox', 'element_assembly_xibox', 'element_include_xibox', 'element_map_xibox', 'element_export_xibox', 'element_config_xibox', 'element_setting_xibox', 'group_metaElements_xibox', 'group_uniqueMetaElements_xibox', 'group_uniqueMetaElements1_2_xibox', 'group_uniqueMetaElements3_4_xibox', 'group_uniqueMetaElements5_6_xibox', 'attribute_src_xibox', 'attribute_type_xibox', 'type_resourceType_xibox', 'type_resourceListType_xibox', 'type_scriptType_xibox', 'type_scriptLangType_xibox', 'type_validIdentifier_xibox', 'type_versionNumberType_xibox');
+var xiBoxes = new Array('element_meta_xibox', 'element_info_xibox', 'element_acl_xibox', 'element_settings_xibox', 'element_script_xibox', 'element_file_xibox', 'element_assembly_xibox', 'element_include_xibox', 'element_map_xibox', 'element_export_xibox', 'element_config_xibox', 'element_setting_xibox', 'group_metaElements_xibox', 'group_uniqueMetaElements_xibox', 'group_uniqueMetaElements1_2_xibox', 'group_uniqueMetaElements3_4_xibox', 'group_uniqueMetaElements5_6_xibox', 'type_resourceType_xibox', 'type_resourceListType_xibox', 'type_scriptType_xibox', 'type_scriptLangType_xibox', 'type_validIdentifier_xibox', 'type_versionNumberType_xibox');
 /* IDs of Schema Component Representation boxes */
-var scBoxes = new Array('schema_scbox', 'element_meta_scbox', 'element_info_scbox', 'element_acl_scbox', 'element_settings_scbox', 'element_script_scbox', 'element_file_scbox', 'element_assembly_scbox', 'element_include_scbox', 'element_map_scbox', 'element_export_scbox', 'element_config_scbox', 'element_setting_scbox', 'group_metaElements_scbox', 'group_uniqueMetaElements_scbox', 'group_uniqueMetaElements1_2_scbox', 'group_uniqueMetaElements3_4_scbox', 'group_uniqueMetaElements5_6_scbox', 'attribute_src_scbox', 'attribute_type_scbox', 'type_resourceType_scbox', 'type_resourceListType_scbox', 'type_scriptType_scbox', 'type_scriptLangType_scbox', 'type_validIdentifier_scbox', 'type_versionNumberType_scbox');
+var scBoxes = new Array('schema_scbox', 'element_meta_scbox', 'element_info_scbox', 'element_acl_scbox', 'element_settings_scbox', 'element_script_scbox', 'element_file_scbox', 'element_assembly_scbox', 'element_include_scbox', 'element_map_scbox', 'element_export_scbox', 'element_config_scbox', 'element_setting_scbox', 'group_metaElements_scbox', 'group_uniqueMetaElements_scbox', 'group_uniqueMetaElements1_2_scbox', 'group_uniqueMetaElements3_4_scbox', 'group_uniqueMetaElements5_6_scbox', 'type_resourceType_scbox', 'type_resourceListType_scbox', 'type_scriptType_scbox', 'type_scriptLangType_scbox', 'type_validIdentifier_scbox', 'type_versionNumberType_scbox');
 
 /**
  * Can get the ID of the button controlling
@@ -680,7 +680,7 @@ function viewDocumentation(compDesc, compName, docTextArray) {
          <div id="printerControls" style="display:none;">
             <input type="checkbox" onclick="displayMode(this.checked)"/>Printer-friendly Version</div>
          <script type="text/javascript">
-// <!--
+<!--
 
 var pc = getElementObject("printerControls");
 if (pc != null) {
@@ -700,7 +700,7 @@ if (pc != null) {
             <span style="margin-left: 1em; white-space: nowrap">[ <a href="javascript:void(0)" onclick="expandAll(scBoxes)">Expand All</a> | <a href="javascript:void(0)" onclick="collapseAll(scBoxes)">Collapse All</a> ]</span>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 
 var gc = getElementObject("globalControls");
 if (gc != null) {
@@ -718,14 +718,6 @@ if (gc != null) {
          <li>
             <a href="#SchemaDeclarations">Global Declarations</a>
             <ul>
-               <li>
-                  <a href="#attribute_src">Attribute: <strong>src</strong>
-                  </a>
-               </li>
-               <li>
-                  <a href="#attribute_type">Attribute: <strong>type</strong>
-                  </a>
-               </li>
                <li>
                   <a href="#element_acl">Element: <strong>acl</strong>
                   </a>
@@ -910,7 +902,7 @@ if (gc != null) {
                <span class="scTag">targetNamespace</span>="<span class="scContent">http://gtan.azurewebsites.net/schema/resource</span>" <span class="scTag">elementFormDefault</span>="<span class="scContent">qualified</span>"&gt;<div class="scContent" style="margin-left: 1.5em">...</div>&lt;/<span class="scTag">xs:schema</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('schema_scbox', false);
 // -->
 </script>
@@ -922,129 +914,6 @@ setState('schema_scbox', false);
       <h2>
          <a name="SchemaDeclarations">Global Declarations</a>
       </h2>
-      <h3>Attribute: <a name="attribute_src" class="name">src</a>
-      </h3>
-      <table class="properties">
-         <tr>
-            <th>Name</th>
-            <td>src</td>
-         </tr>
-         <tr>
-            <th>Type</th>
-            <td>
-               <span class="type">
-                  <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
-            </td>
-         </tr>
-      </table>
-      <div class="sample box">
-         <div>
-            <input type="button"
-                   id="attribute_src_xibox_button"
-                   class="control"
-                   onclick="switchState('attribute_src_xibox'); return false;"
-                   style="display: none"/> 
-            <span class="caption">XML Instance Representation</span>
-         </div>
-         <div id="attribute_src_xibox" class="contents">
-            <span style="margin-left: 0em"> src="<span class="type">
-                  <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>"</span>
-         </div>
-         <script type="text/javascript">
-// <!--
-setState('attribute_src_xibox', true);
-// -->
-</script>
-      </div>
-      <div class="schemaComponent box">
-         <div>
-            <input type="button"
-                   id="attribute_src_scbox_button"
-                   class="control"
-                   onclick="switchState('attribute_src_scbox'); return false;"
-                   style="display: none"/> 
-            <span class="caption">Schema Component Representation</span>
-         </div>
-         <div id="attribute_src_scbox" class="contents">
-            <div style="margin-left: 0em">&lt;<span class="scTag">xs:attribute</span> 
-               <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
-                  <span class="type">
-                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
-               </span>"/&gt;</div>
-         </div>
-         <script type="text/javascript">
-// <!--
-setState('attribute_src_scbox', false);
-// -->
-</script>
-      </div>
-      <div style="text-align: right; clear: both;">
-         <a href="#top">top</a>
-      </div>
-      <hr/>
-      <h3>Attribute: <a name="attribute_type" class="name">type</a>
-      </h3>
-      <table class="properties">
-         <tr>
-            <th>Name</th>
-            <td>type</td>
-         </tr>
-         <tr>
-            <th>Type</th>
-            <td>
-               <span class="type">
-                  <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
-               </span>
-            </td>
-         </tr>
-      </table>
-      <div class="sample box">
-         <div>
-            <input type="button"
-                   id="attribute_type_xibox_button"
-                   class="control"
-                   onclick="switchState('attribute_type_xibox'); return false;"
-                   style="display: none"/> 
-            <span class="caption">XML Instance Representation</span>
-         </div>
-         <div id="attribute_type_xibox" class="contents">
-            <span style="margin-left: 0em"> type="<span class="type">
-                  <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
-               </span>"</span>
-         </div>
-         <script type="text/javascript">
-// <!--
-setState('attribute_type_xibox', true);
-// -->
-</script>
-      </div>
-      <div class="schemaComponent box">
-         <div>
-            <input type="button"
-                   id="attribute_type_scbox_button"
-                   class="control"
-                   onclick="switchState('attribute_type_scbox'); return false;"
-                   style="display: none"/> 
-            <span class="caption">Schema Component Representation</span>
-         </div>
-         <div id="attribute_type_scbox" class="contents">
-            <div style="margin-left: 0em">&lt;<span class="scTag">xs:attribute</span> 
-               <span class="scTag">name</span>="<span class="scContent">type</span>" <span class="scTag">type</span>="<span class="scContent">
-                  <span class="type">
-                     <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
-                  </span>
-               </span>"/&gt;</div>
-         </div>
-         <script type="text/javascript">
-// <!--
-setState('attribute_type_scbox', false);
-// -->
-</script>
-      </div>
-      <div style="text-align: right; clear: both;">
-         <a href="#top">top</a>
-      </div>
-      <hr/>
       <h3>Element: <a name="element_acl" class="name">acl</a>
       </h3>
       <table class="properties">
@@ -1089,11 +958,12 @@ setState('attribute_type_scbox', false);
          </div>
          <div id="element_acl_xibox" class="contents">
             <div style="margin-left: 0em">&lt;acl<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[1]</span>"</span>/&gt; </div>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_acl_xibox', true);
 // -->
 </script>
@@ -1110,12 +980,13 @@ setState('element_acl_xibox', true);
          <div id="element_acl_scbox" class="contents">
             <div style="margin-left: 0em">&lt;<span class="scTag">xs:element</span> 
                <span class="scTag">name</span>="<span class="scContent">acl</span>"&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:complexType</span>&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_acl_scbox', false);
 // -->
 </script>
@@ -1168,7 +1039,7 @@ setState('element_acl_scbox', false);
                   <span class="occurs">[1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_assembly_xibox', true);
 // -->
 </script>
@@ -1191,7 +1062,7 @@ setState('element_assembly_xibox', true);
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_assembly_scbox', false);
 // -->
 </script>
@@ -1240,14 +1111,17 @@ setState('element_assembly_scbox', false);
          </div>
          <div id="element_config_xibox" class="contents">
             <div style="margin-left: 0em">&lt;config<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[1]</span>"</span>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[1]</span>"</span>
                <br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;type&#34; attribute declaration." href="#attribute_type">type</a>="<span class="occurs">[1]</span>"</span>/&gt; </div>
+               <span style="margin-left: 0.5em"> type="<span class="type">
+                     <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
+                  </span> 
+                  <span class="occurs">[1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_config_xibox', true);
 // -->
 </script>
@@ -1264,16 +1138,19 @@ setState('element_config_xibox', true);
          <div id="element_config_scbox" class="contents">
             <div style="margin-left: 0em">&lt;<span class="scTag">xs:element</span> 
                <span class="scTag">name</span>="<span class="scContent">config</span>"&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:complexType</span>&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>
                   <div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;type&#34; attribute declaration." href="#attribute_type">type</a>
+                     <span class="scTag">name</span>="<span class="scContent">type</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
+                        </span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_config_scbox', false);
 // -->
 </script>
@@ -1345,7 +1222,7 @@ setState('element_config_scbox', false);
                   <span class="occurs">[0..1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_export_xibox', true);
 // -->
 </script>
@@ -1384,7 +1261,7 @@ setState('element_export_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_export_scbox', false);
 // -->
 </script>
@@ -1432,11 +1309,12 @@ setState('element_export_scbox', false);
          </div>
          <div id="element_file_xibox" class="contents">
             <div style="margin-left: 0em">&lt;file<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[1]</span>"</span>/&gt; </div>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_file_xibox', true);
 // -->
 </script>
@@ -1453,12 +1331,13 @@ setState('element_file_xibox', true);
          <div id="element_file_scbox" class="contents">
             <div style="margin-left: 0em">&lt;<span class="scTag">xs:element</span> 
                <span class="scTag">name</span>="<span class="scContent">file</span>"&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:complexType</span>&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_file_scbox', false);
 // -->
 </script>
@@ -1513,7 +1392,7 @@ setState('element_file_scbox', false);
                   <span class="occurs">[1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_include_xibox', true);
 // -->
 </script>
@@ -1538,7 +1417,7 @@ setState('element_include_xibox', true);
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_include_scbox', false);
 // -->
 </script>
@@ -1635,7 +1514,7 @@ setState('element_include_scbox', false);
                   <span class="occurs">[0..1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_info_xibox', true);
 // -->
 </script>
@@ -1699,7 +1578,7 @@ setState('element_info_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_info_scbox', false);
 // -->
 </script>
@@ -1748,15 +1627,16 @@ setState('element_info_scbox', false);
          </div>
          <div id="element_map_xibox" class="contents">
             <div style="margin-left: 0em">&lt;map<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[1]</span>"</span>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[1]</span>"</span>
                <br/>
                <span style="margin-left: 0.5em"> dimension="<span class="type">
                      <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:nonNegativeInteger</span> 
                   <span class="occurs">[0..1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_map_xibox', true);
 // -->
 </script>
@@ -1773,8 +1653,9 @@ setState('element_map_xibox', true);
          <div id="element_map_scbox" class="contents">
             <div style="margin-left: 0em">&lt;<span class="scTag">xs:element</span> 
                <span class="scTag">name</span>="<span class="scContent">map</span>"&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:complexType</span>&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>
                   <div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
                      <span class="scTag">name</span>="<span class="scContent">dimension</span>" <span class="scTag">type</span>="<span class="scContent">
@@ -1783,7 +1664,7 @@ setState('element_map_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_map_scbox', false);
 // -->
 </script>
@@ -2327,7 +2208,7 @@ setState('element_map_scbox', false);
                <br/>&lt;/meta&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_meta_xibox', true);
 // -->
 </script>
@@ -2363,7 +2244,7 @@ setState('element_meta_xibox', true);
                            </span>"/&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_meta_scbox', false);
 // -->
 </script>
@@ -2412,11 +2293,14 @@ setState('element_meta_scbox', false);
          </div>
          <div id="element_script_xibox" class="contents">
             <div style="margin-left: 0em">&lt;script<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[1]</span>"</span>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[1]</span>"</span>
                <br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;type&#34; attribute declaration." href="#attribute_type">type</a>="<span class="occurs">[1]</span>"</span>
+               <span style="margin-left: 0.5em"> type="<span class="type">
+                     <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
+                  </span> 
+                  <span class="occurs">[1]</span>"</span>
                <br/>
                <span style="margin-left: 0.5em"> lang="<span class="type">
                      <a title="Jump to &#34;scriptLangType&#34; type definition."
@@ -2425,7 +2309,7 @@ setState('element_meta_scbox', false);
                   <span class="occurs">[0..1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_script_xibox', true);
 // -->
 </script>
@@ -2442,12 +2326,15 @@ setState('element_script_xibox', true);
          <div id="element_script_scbox" class="contents">
             <div style="margin-left: 0em">&lt;<span class="scTag">xs:element</span> 
                <span class="scTag">name</span>="<span class="scContent">script</span>"&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:complexType</span>&gt;<div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>
                   <div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;type&#34; attribute declaration." href="#attribute_type">type</a>
+                     <span class="scTag">name</span>="<span class="scContent">type</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a title="Jump to &#34;scriptType&#34; type definition." href="#type_scriptType">scriptType</a>
+                        </span>
                      </span>" <span class="scTag">use</span>="<span class="scContent">required</span>"/&gt;</div>
                   <div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
                      <span class="scTag">name</span>="<span class="scContent">lang</span>" <span class="scTag">type</span>="<span class="scContent">
@@ -2458,7 +2345,7 @@ setState('element_script_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_script_scbox', false);
 // -->
 </script>
@@ -2524,7 +2411,7 @@ setState('element_script_scbox', false);
                   <span class="occurs">[0..1]</span>"</span>/&gt; </div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_setting_xibox', true);
 // -->
 </script>
@@ -2562,7 +2449,7 @@ setState('element_setting_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_setting_scbox', false);
 // -->
 </script>
@@ -2615,8 +2502,9 @@ setState('element_setting_scbox', false);
          </div>
          <div id="element_settings_xibox" class="contents">
             <div style="margin-left: 0em">&lt;settings<br/>
-               <span style="margin-left: 0.5em"> 
-                  <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>="<span class="occurs">[0..1]</span>"</span>&gt; <br/>
+               <span style="margin-left: 0.5em"> src="<span class="type">
+                     <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span> 
+                  <span class="occurs">[0..1]</span>"</span>&gt; <br/>
                <span class="group" style="margin-left: 1.5em">Start <a title="Look up 'Sequence' in glossary" href="#term_Sequence">Sequence</a> 
                   <span class="occurs">[1..*]</span>
                </span>
@@ -2627,7 +2515,7 @@ setState('element_setting_scbox', false);
                <br/>&lt;/settings&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_settings_xibox', true);
 // -->
 </script>
@@ -2649,12 +2537,13 @@ setState('element_settings_xibox', true);
                            <a title="Jump to &#34;setting&#34; element declaration." href="#element_setting">setting</a>
                         </span>"/&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>
                   <div style="margin-left: 1.5em">&lt;<span class="scTag">xs:attribute</span> 
-                     <span class="scTag">ref</span>="<span class="scContent">
-                        <a title="Jump to &#34;src&#34; attribute declaration." href="#attribute_src">src</a>
+                     <span class="scTag">name</span>="<span class="scContent">src</span>" <span class="scTag">type</span>="<span class="scContent">
+                        <span class="type">
+                           <a href="#ns_xs" title="Find out namespace of 'xs' prefix">xs</a>:anyURI</span>
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:complexType</span>&gt;</div>&lt;/<span class="scTag">xs:element</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('element_settings_scbox', false);
 // -->
 </script>
@@ -2712,7 +2601,7 @@ setState('element_settings_scbox', false);
             <br/>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_metaElements_xibox', true);
 // -->
 </script>
@@ -2759,7 +2648,7 @@ setState('group_metaElements_xibox', true);
                      </span>"/&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:group</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_metaElements_scbox', false);
 // -->
 </script>
@@ -3222,7 +3111,7 @@ setState('group_metaElements_scbox', false);
             <br/>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements_xibox', true);
 // -->
 </script>
@@ -3261,7 +3150,7 @@ setState('group_uniqueMetaElements_xibox', true);
                         </span>"/&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:group</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements_scbox', false);
 // -->
 </script>
@@ -3422,7 +3311,7 @@ setState('group_uniqueMetaElements_scbox', false);
             <br/>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements1_2_xibox', true);
 // -->
 </script>
@@ -3486,7 +3375,7 @@ setState('group_uniqueMetaElements1_2_xibox', true);
                            </span>" <span class="scTag">minOccurs</span>="<span class="scContent">0</span>"/&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:group</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements1_2_scbox', false);
 // -->
 </script>
@@ -3647,7 +3536,7 @@ setState('group_uniqueMetaElements1_2_scbox', false);
             <br/>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements3_4_xibox', true);
 // -->
 </script>
@@ -3711,7 +3600,7 @@ setState('group_uniqueMetaElements3_4_xibox', true);
                            </span>" <span class="scTag">minOccurs</span>="<span class="scContent">0</span>"/&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:group</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements3_4_scbox', false);
 // -->
 </script>
@@ -3870,7 +3759,7 @@ setState('group_uniqueMetaElements3_4_scbox', false);
             <br/>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements5_6_xibox', true);
 // -->
 </script>
@@ -3933,7 +3822,7 @@ setState('group_uniqueMetaElements5_6_xibox', true);
                            </span>" <span class="scTag">minOccurs</span>="<span class="scContent">0</span>"/&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:choice</span>&gt;</div>&lt;/<span class="scTag">xs:sequence</span>&gt;</div>&lt;/<span class="scTag">xs:group</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('group_uniqueMetaElements5_6_scbox', false);
 // -->
 </script>
@@ -4004,7 +3893,7 @@ setState('group_uniqueMetaElements5_6_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">(([a-zA-Z0-9_])+(,([a-zA-Z0-9_])+)*)</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_resourceListType_scbox', false);
 // -->
 </script>
@@ -4068,7 +3957,7 @@ setState('type_resourceListType_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">map</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_resourceType_scbox', false);
 // -->
 </script>
@@ -4134,7 +4023,7 @@ setState('type_resourceType_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">compiled</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_scriptLangType_scbox', false);
 // -->
 </script>
@@ -4200,7 +4089,7 @@ setState('type_scriptLangType_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">server</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_scriptType_scbox', false);
 // -->
 </script>
@@ -4264,7 +4153,7 @@ setState('type_scriptType_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">[a-zA-Z_@][a-zA-Z_0-9]*</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_validIdentifier_scbox', false);
 // -->
 </script>
@@ -4331,7 +4220,7 @@ setState('type_validIdentifier_scbox', false);
                      <span class="scTag">value</span>="<span class="scContent">[0-9]+(\.?[0-9]+)*</span>"/&gt;</div>&lt;/<span class="scTag">xs:restriction</span>&gt;</div>&lt;/<span class="scTag">xs:simpleType</span>&gt;</div>
          </div>
          <script type="text/javascript">
-// <!--
+<!--
 setState('type_versionNumberType_scbox', false);
 // -->
 </script>
@@ -4604,7 +4493,7 @@ setState('type_versionNumberType_scbox', false);
       </div>
       <p class="footer">Generated by <a href="http://xml.fiforms.org/xs3p/">xs3p</a> (<a href="http://titanium.dstc.edu.au/xml/xs3p">old link</a>)
                . Last modified: <script type="text/javascript">
-// <!--
+<!--
 document.write(document.lastModified);
 // -->
 </script>
