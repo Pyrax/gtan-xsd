@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: Complete schema -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml"
+           targetNamespace="http://gtan.azurewebsites.net/schema/resource"
+           xmlns="http://gtan.azurewebsites.net/schema/resource"
+           elementFormDefault="qualified">
+
+  <!-- ========================================== -->
+  <!-- Root element -->
+  <!-- ========================================== -->
+  <xs:element name="map">
+    <xs:annotation>
+      <xs:documentation>
+        Defines a GTA-Network map file.
+        <xhtml:strong>This is the root element.</xhtml:strong>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="mapElements" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- Top level map-elements -->
+  <!-- ========================================== -->
+  <xs:group name="mapElements">
+    <xs:choice>
+      <xs:element ref="spawnpoint" />
+      <xs:element ref="vehicle" />
+      <xs:element ref="weapon" />
+      <xs:element ref="ipl" />
+    </xs:choice>
+  </xs:group>
+
+  <xs:element name="spawnpoint">
+    <xs:complexType>
+      <xs:attribute name="team" type="xs:int" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attribute name="heading" type="xs:float" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="vehicle">
+    <xs:complexType>
+      <xs:attribute name="model" type="hashType" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attributeGroup ref="rotAttributes" />
+      <xs:attribute name="color1" type="colorType" />
+      <xs:attribute name="color2" type="colorType" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="weapon">
+    <xs:complexType>
+      <xs:attribute name="model" type="weaponNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ipl">
+    <xs:complexType>
+      <xs:attribute name="name" type="iplNameType" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ========================================== -->
+  <!-- Reusable attribute groups -->
+  <!-- ========================================== -->
+  <xs:attributeGroup name="posAttributes">
+    <xs:attribute name="posX" type="xs:float" use="required" />
+    <xs:attribute name="posY" type="xs:float" use="required" />
+    <xs:attribute name="posZ" type="xs:float" use="required" />
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="rotAttributes">
+    <xs:attribute name="rotX" type="xs:float" use="required" />
+    <xs:attribute name="rotY" type="xs:float" use="required" />
+    <xs:attribute name="rotZ" type="xs:float" use="required" />
+  </xs:attributeGroup>
+
+  <!-- ========================================== -->
+  <!-- Simple types -->
+  <!-- ========================================== -->
+  <xs:simpleType name="hashType">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="colorType">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+
+  <xs:simpleType name="weaponNameType">
+    <!-- TODO: Add enumeration of weapon models -->
+    <xs:restriction base="xs:token" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="iplNameType">
+    <xs:restriction base="xs:token" />
+  </xs:simpleType>
+</xs:schema>
