@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- TODO: Complete schema -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:xhtml="http://www.w3.org/1999/xhtml"
            targetNamespace="http://gtan.azurewebsites.net/schema/resource"
@@ -32,6 +31,10 @@
       <xs:element ref="vehicle" />
       <xs:element ref="weapon" />
       <xs:element ref="ipl" />
+      <xs:element ref="ped" />
+      <xs:element ref="marker" />
+      <xs:element ref="prop" />
+      <xs:any namespace="##other" processContents="lax" />
     </xs:choice>
   </xs:group>
 
@@ -40,31 +43,68 @@
       <xs:attribute name="team" type="xs:int" />
       <xs:attributeGroup ref="posAttributes" />
       <xs:attribute name="heading" type="xs:float" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="vehicle">
     <xs:complexType>
-      <xs:attribute name="model" type="hashType" />
+      <xs:attribute name="model" type="vehicleHashType" />
       <xs:attributeGroup ref="posAttributes" />
       <xs:attributeGroup ref="rotAttributes" />
-      <xs:attribute name="color1" type="colorType" />
-      <xs:attribute name="color2" type="colorType" />
+      <xs:attribute name="color1" type="rgbaColorType" />
+      <xs:attribute name="color2" type="rgbaColorType" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="weapon">
     <xs:complexType>
       <xs:attribute name="model" type="weaponNameType" use="required" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="ipl">
     <xs:complexType>
       <xs:attribute name="name" type="iplNameType" use="required" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="ped">
+    <xs:complexType>
+      <xs:attribute name="model" type="xs:int" use="required" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attribute name="heading" type="xs:float" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="marker">
+    <xs:complexType>
+      <xs:attribute name="model" type="markerType" use="required" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attributeGroup ref="rotAttributes" />
+      <xs:attributeGroup ref="dirAttributes" />
+      <xs:attributeGroup ref="scaleAttributes" />
+      <xs:attribute name="alpha" type="singleColorType" />
+      <xs:attribute name="red" type="singleColorType" />
+      <xs:attribute name="green" type="singleColorType" />
+      <xs:attribute name="blue" type="singleColorType" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="prop">
+    <xs:complexType>
+      <xs:attribute name="model" type="hashType" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attributeGroup ref="rotAttributes" />
+      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+  
   <!-- ========================================== -->
   <!-- Reusable attribute groups -->
   <!-- ========================================== -->
@@ -80,6 +120,18 @@
     <xs:attribute name="rotZ" type="xs:float" use="required" />
   </xs:attributeGroup>
 
+  <xs:attributeGroup name="dirAttributes">
+    <xs:attribute name="dirX" type="xs:float" use="required" />
+    <xs:attribute name="dirY" type="xs:float" use="required" />
+    <xs:attribute name="dirZ" type="xs:float" use="required" />
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="scaleAttributes">
+    <xs:attribute name="scaleX" type="xs:float" use="required" />
+    <xs:attribute name="scaleY" type="xs:float" use="required" />
+    <xs:attribute name="scaleZ" type="xs:float" use="required" />
+  </xs:attributeGroup>
+
   <!-- ========================================== -->
   <!-- Simple types -->
   <!-- ========================================== -->
@@ -87,8 +139,32 @@
     <xs:restriction base="xs:int" />
   </xs:simpleType>
   
-  <xs:simpleType name="colorType">
+  <xs:simpleType name="vehicleHashType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="hashType" />
+      </xs:simpleType>
+      
+      <!-- Vehicle hashes in name form -->
+      <xs:simpleType>
+        <xs:restriction base="xs:token" />
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="markerType">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0" />
+      <xs:maxExclusive value="28" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="rgbaColorType">
     <xs:restriction base="xs:int" />
+  </xs:simpleType>
+
+  <xs:simpleType name="singleColorType">
+    <xs:restriction base="xs:byte" />
   </xs:simpleType>
 
   <xs:simpleType name="weaponNameType">
