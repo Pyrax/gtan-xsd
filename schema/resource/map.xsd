@@ -27,57 +27,53 @@
   <!-- ========================================== -->
   <xs:group name="mapElements">
     <xs:choice>
-      <xs:element ref="spawnpoint" />
+      <xs:element ref="world" />
       <xs:element ref="vehicle" />
-      <xs:element ref="weapon" />
       <xs:element ref="ipl" />
+      <xs:element ref="removeipl" />
       <xs:element ref="ped" />
       <xs:element ref="marker" />
       <xs:element ref="prop" />
-      <xs:any namespace="##other" processContents="lax" />
+      <xs:element ref="pickup" />
+      <xs:element ref="blip" />
+      <xs:element ref="textlabel" />
     </xs:choice>
   </xs:group>
 
-  <xs:element name="spawnpoint">
+  <xs:element name="world">
     <xs:complexType>
-      <xs:attribute name="team" type="xs:int" />
-      <xs:attributeGroup ref="posAttributes" />
-      <xs:attribute name="heading" type="xs:float" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+      <xs:attribute name="time" type="timeSpanType" />
+      <xs:attribute name="weather" type="xs:int" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="vehicle">
     <xs:complexType>
-      <xs:attribute name="model" type="vehicleHashType" />
+      <xs:attribute name="model" type="vehicleHashType" use="required" />
       <xs:attributeGroup ref="posAttributes" />
       <xs:attributeGroup ref="rotAttributes" />
-      <xs:attribute name="color1" type="rgbaColorType" />
-      <xs:attribute name="color2" type="rgbaColorType" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
-    </xs:complexType>
-  </xs:element>
-
-  <xs:element name="weapon">
-    <xs:complexType>
-      <xs:attribute name="model" type="weaponNameType" use="required" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+      <xs:attribute name="color1" type="rgbaColorType" use="required" />
+      <xs:attribute name="color2" type="rgbaColorType" use="required" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="ipl">
     <xs:complexType>
       <xs:attribute name="name" type="iplNameType" use="required" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="removeipl">
+    <xs:complexType>
+      <xs:attribute name="name" type="iplNameType" use="required" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="ped">
     <xs:complexType>
-      <xs:attribute name="model" type="xs:int" use="required" />
+      <xs:attribute name="model" type="pedHashType" use="required" />
       <xs:attributeGroup ref="posAttributes" />
-      <xs:attribute name="heading" type="xs:float" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+      <xs:attribute name="heading" type="xs:float" use="required" />
     </xs:complexType>
   </xs:element>
 
@@ -88,20 +84,47 @@
       <xs:attributeGroup ref="rotAttributes" />
       <xs:attributeGroup ref="dirAttributes" />
       <xs:attributeGroup ref="scaleAttributes" />
-      <xs:attribute name="alpha" type="singleColorType" />
-      <xs:attribute name="red" type="singleColorType" />
-      <xs:attribute name="green" type="singleColorType" />
-      <xs:attribute name="blue" type="singleColorType" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+      <xs:attribute name="alpha" type="singleColorType" use="required" />
+      <xs:attribute name="red" type="singleColorType" use="required" />
+      <xs:attribute name="green" type="singleColorType" use="required" />
+      <xs:attribute name="blue" type="singleColorType" use="required" />
     </xs:complexType>
   </xs:element>
 
   <xs:element name="prop">
     <xs:complexType>
-      <xs:attribute name="model" type="hashType" />
+      <xs:attribute name="model" type="hashType" use="required" />
       <xs:attributeGroup ref="posAttributes" />
       <xs:attributeGroup ref="rotAttributes" />
-      <xs:anyAttribute namespace="##other" processContents="lax" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="pickup">
+    <xs:complexType>
+      <xs:attribute name="model" type="pickupHashType" use="required" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attributeGroup ref="rotAttributes" />
+      <xs:attribute name="amount" type="xs:int" use="required" />
+      <xs:attribute name="respawn" type="xs:unsignedInt" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="blip">
+    <xs:complexType>
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attribute name="sprite" type="xs:int" />
+      <xs:attribute name="color" type="xs:int" />
+      <xs:attribute name="scale" type="xs:float" />
+      <xs:attribute name="bool" type="xs:boolean" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="textlabel">
+    <xs:complexType>
+      <xs:attribute name="text" type="xs:string" use="required" />
+      <xs:attributeGroup ref="posAttributes" />
+      <xs:attribute name="range" type="xs:float" use="required" />
+      <xs:attribute name="size" type="xs:float" use="required" />
     </xs:complexType>
   </xs:element>
   
@@ -135,6 +158,10 @@
   <!-- ========================================== -->
   <!-- Simple types -->
   <!-- ========================================== -->
+  <xs:simpleType name="timeSpanType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  
   <xs:simpleType name="hashType">
     <xs:restriction base="xs:int" />
   </xs:simpleType>
@@ -145,7 +172,33 @@
         <xs:restriction base="hashType" />
       </xs:simpleType>
       
-      <!-- Vehicle hashes in name form -->
+      <!-- TODO: Replace token with enum of vehicle hashes -->
+      <xs:simpleType>
+        <xs:restriction base="xs:token" />
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="pickupHashType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="hashType" />
+      </xs:simpleType>
+      
+      <!-- TODO: Replace token with enum of pickup hashes -->
+      <xs:simpleType>
+        <xs:restriction base="xs:token" />
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+
+  <xs:simpleType name="pedHashType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="hashType" />
+      </xs:simpleType>
+
+      <!-- TODO: Replace token with enum of ped hashes -->
       <xs:simpleType>
         <xs:restriction base="xs:token" />
       </xs:simpleType>
@@ -155,7 +208,7 @@
   <xs:simpleType name="markerType">
     <xs:restriction base="xs:int">
       <xs:minInclusive value="0" />
-      <xs:maxExclusive value="28" />
+      <xs:maxExclusive value="31" />
     </xs:restriction>
   </xs:simpleType>
   
@@ -165,11 +218,6 @@
 
   <xs:simpleType name="singleColorType">
     <xs:restriction base="xs:byte" />
-  </xs:simpleType>
-
-  <xs:simpleType name="weaponNameType">
-    <!-- TODO: Add enumeration of weapon models -->
-    <xs:restriction base="xs:token" />
   </xs:simpleType>
   
   <xs:simpleType name="iplNameType">
