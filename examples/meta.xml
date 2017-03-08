@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <meta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	  xmlns="http://gtan.azurewebsites.net/schema/resource"
-	  xsi:schemaLocation="http://gtan.azurewebsites.net/schema/resource 
-						  http://gtan.azurewebsites.net/schema/resource/meta.xsd">
-	
-	<info name="TestScript" author="Pyrax" description="This script is just a test for using schema files." version="1.0.0" type="script" />
-	
-	<acl src="acl.xml" />
-	
-	<script src="test.cs" type="server" />
-	<script src="test.js" type="client" />
-	
-	<settings>
-		<setting name="enableautoupdate" value="true" default="true" description="Whether it automatically updates." />
-		<setting name="enablefirstperson" value="true" default="true" description="Enables first person mode." />
-		<setting name="enabledebug" value="false" default="false" description="Enables debug mode." />
-	</settings>
+      xmlns="http://gtan.azurewebsites.net/schema/resource"
+      xsi:schemaLocation="http://gtan.azurewebsites.net/schema/resource 
+                          http://gtan.azurewebsites.net/schema/resource/meta.xsd">
+    
+    <info name="TestScript" author="Pyrax" description="This script is just a test for using schema files." version="1.0.0" type="script" />
+    
+    <acl src="acl.xml" />
+    
+    <script src="test.cs" type="server" />
+    <script src="test.js" type="client" />
+    
+    <settings>
+        <setting name="enableautoupdate" value="true" default="true" description="Whether it automatically updates." />
+        <setting name="enablefirstperson" value="true" default="true" description="Enables first person mode." />
+        <setting name="enabledebug" value="false" default="false" description="Enables debug mode." />
+    </settings>
 </meta>
